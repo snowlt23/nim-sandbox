@@ -31,6 +31,10 @@ macro restrictcopy*(procdef: untyped): untyped =
   else:
     error fmt"`${res.get.repr}` is violation copy", res.get
 
+#
+# Example
+#
+
 type
   MyInt* = object
     x*: int
@@ -38,8 +42,7 @@ type
 
 proc main() {.restrictcopy.} =
   let a = MyInt(x: 1, y: 2)
-  let b: MyInt
-  b = a
+  let b = a # compile error
   echo a
   echo b
 
