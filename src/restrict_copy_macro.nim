@@ -11,7 +11,7 @@ proc isViolationCopy*(valuenode: NimNode): bool =
     return false
   elif valuenode.kind == nnkObjConstr: # var a = T()
     return false
-  elif valuenode.kind == nnkCall and ($valuenode[0]).startsWith("init"):
+  elif valuenode.kind == nnkCall and ($valuenode[0]).startsWith("init"): # init...* proc
     return false
   else:
     return true
